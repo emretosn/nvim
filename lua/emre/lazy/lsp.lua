@@ -30,6 +30,7 @@ return {
                 "pyright",
                 "gopls",
                 "rust_analyzer",
+                "clangd",
             },
             handlers = {
                 function(server_name) -- default handler (optional)
@@ -87,6 +88,8 @@ return {
                 source = "always",
                 header = "",
                 prefix = "",
+                max_width = 100,
+                max_height = 20,
             },
         })
     end
