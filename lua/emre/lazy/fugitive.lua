@@ -3,7 +3,7 @@ return {
     config = function()
         vim.keymap.set("n", "<leader>gs", vim.cmd.Git)
 
-        local emre_Fugitive = vim.api.nvim_create_augroup("emre_Fugitivec", {})
+        local emre_Fugitive = vim.api.nvim_create_augroup("emre_Fugitive", {})
 
         local autocmd = vim.api.nvim_create_autocmd
         autocmd("BufWinEnter", {
