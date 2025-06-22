@@ -29,12 +29,14 @@ return {
                 "lua_ls",
                 "pyright",
                 "gopls",
+                "jdtls",
                 "rust_analyzer",
                 "clangd",
+                "eslint",
+                "texlab",
             },
             handlers = {
                 function(server_name) -- default handler (optional)
-
                     require("lspconfig")[server_name].setup {
                         capabilities = capabilities
                     }
@@ -46,7 +48,7 @@ return {
                         capabilities = capabilities,
                         settings = {
                             Lua = {
-				    runtime = { version = "Lua 5.1" },
+                                runtime = { version = "Lua 5.1" },
                                 diagnostics = {
                                     globals = { "vim", "it", "describe", "before_each", "after_each" },
                                 }

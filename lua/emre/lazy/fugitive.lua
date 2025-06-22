@@ -31,6 +31,17 @@ return {
             end,
         })
 
+        -- Add the current file to the staging area
+        vim.keymap.set("n", "<leader>ga", function()
+            vim.cmd.Git("add %")
+        end, { desc = "Git Add Current File" })
+
+        -- Add all changes in the current directory
+        vim.keymap.set("n", "<leader>gA", function()
+            vim.cmd.Git("add .")
+        end, { desc = "Git Add All Changes" })
+
+        vim.keymap.set("n", "<leader>gc", vim.cmd.Git("commit"), { desc = "Git Commit" })
 
         vim.keymap.set("n", "gu", "<cmd>diffget //2<CR>")
         vim.keymap.set("n", "gh", "<cmd>diffget //3<CR>")
