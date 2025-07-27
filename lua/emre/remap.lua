@@ -39,6 +39,18 @@ vim.keymap.set(
 
 vim.keymap.set("n", "<leader>mr", "<cmd>CellularAutomaton make_it_rain<CR>");
 
+function ToggleLineNumbers()
+    if vim.wo.relativenumber then
+        vim.wo.relativenumber = false
+        vim.wo.number = true
+    else
+        vim.wo.relativenumber = true
+        vim.wo.number = true
+    end
+end
+
+vim.keymap.set("n", "<leader>ln", ToggleLineNumbers, { desc = "Toggle relative line numbers" })
+
 --vim.keymap.set("i", "{", "{}<Esc>ha")
 --vim.keymap.set("i", "[", "[]<Esc>ha")
 --vim.keymap.set("i", "(", "()<Esc>ha")
