@@ -41,7 +41,7 @@ return {
             vim.cmd.Git("add .")
         end, { desc = "Git Add All Changes" })
 
-        vim.keymap.set("n", "<leader>gc", vim.cmd.Git("commit"), { desc = "Git Commit" })
+        vim.keymap.set("n", "<leader>gc", function() vim.cmd.Git("commit") end, { desc = "Git Commit" })
 
         vim.keymap.set("n", "gu", "<cmd>diffget //2<CR>")
         vim.keymap.set("n", "gh", "<cmd>diffget //3<CR>")
