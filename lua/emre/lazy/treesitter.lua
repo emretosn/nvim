@@ -2,13 +2,9 @@ return {
     "nvim-treesitter/nvim-treesitter",
     build = ":TSUpdate",
     config = function()
-        require("nvim-treesitter").setup({
-            ensure_installed = {
+        require('nvim-treesitter').install({
                 "vimdoc", "go", "python", "javascript", "typescript", "c", "cpp", "lua", "rust",
-                "jsdoc", "bash", "java",
-            },
+                "jsdoc", "bash", "java", "yaml",
         })
-
-        vim.treesitter.language.register("templ", "templ")
     end
 }
