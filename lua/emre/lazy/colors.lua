@@ -1,4 +1,4 @@
-function ColorMyPencils(color)
+function Theme(color)
 	color = color or "rose-pine"
 	vim.cmd.colorscheme(color)
 
@@ -21,7 +21,7 @@ return {
 
             vim.cmd("colorscheme rose-pine")
 
-            ColorMyPencils()
+            Theme()
         end
     },
 }
