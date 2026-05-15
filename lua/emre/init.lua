@@ -2,6 +2,8 @@ require("emre.remap")
 require("emre.set")
 require("emre.lazy_init")
 
+vim.filetype.add({ extension = { sage = "python" } })
+
 local augroup = vim.api.nvim_create_augroup
 local emreGroup = augroup('emre', {})
 
