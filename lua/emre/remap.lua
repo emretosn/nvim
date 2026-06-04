@@ -40,6 +40,8 @@ vim.keymap.set(
 
 vim.keymap.set("n", "<leader>mr", "<cmd>CellularAutomaton make_it_rain<CR>");
 
+vim.keymap.set("n", "<leader>lc", "<cmd>VimtexCompileSS<CR>", { desc = "VimTeX single-shot compile" })
+
 function ToggleLineNumbers()
     if vim.wo.relativenumber then
         vim.wo.relativenumber = false
