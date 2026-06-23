@@ -9,7 +9,7 @@ return {
 
         local ensure_installed = {
             "go", "lua", "python", "bash", "javascript", "typescript",
-            "c", "cpp", "rust", "java", "yaml", "jsdoc", "vimdoc", "bicep",
+            "c", "cpp", "rust", "java", "yaml", "jsdoc", "vimdoc", "bicep", "terraform",
         }
 
         -- Install any missing parsers.
@@ -25,7 +25,7 @@ return {
         vim.api.nvim_create_autocmd("FileType", {
             callback = function(ev)
                 local lang = vim.treesitter.language.get_lang(vim.bo[ev.buf].filetype)
-                if lang and vim.tbl_contains(ensure_installed, lang) then
+                if lang and vim.tbl_contains(ts.get_installed(), lang) then
                     pcall(vim.treesitter.start, ev.buf, lang)
                 end
             end,
