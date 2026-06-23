@@ -47,8 +47,8 @@ return {
             vim.cmd.Git('push')
         end, { desc = "Git Push" })
 
-        vim.keymap.set("n", "gvd", "<cmd>Gvdiffsplit!<CR>")
-        vim.keymap.set("n", "gu", "<cmd>diffget //2<CR>")
-        vim.keymap.set("n", "gh", "<cmd>diffget //3<CR>")
+        vim.keymap.set("n", "<leader>gvd", "<cmd>Gvdiffsplit!<CR>")
+        vim.keymap.set("n", "<leader>go", "<cmd>diffget //2<CR>")
+        vim.keymap.set("n", "<leader>gt", "<cmd>diffget //3<CR>")
     end
 }
