@@ -35,6 +35,7 @@ return {
                 "eslint",
                 "texlab",
                 "bicep",
+                "terraformls",
             },
             handlers = {
                 function(server_name) -- default handler (optional)
