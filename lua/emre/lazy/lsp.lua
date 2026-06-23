@@ -34,6 +34,7 @@ return {
                 --"clangd",
                 "eslint",
                 "texlab",
+                "bicep",
             },
             handlers = {
                 function(server_name) -- default handler (optional)
