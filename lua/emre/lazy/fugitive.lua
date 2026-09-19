@@ -1,10 +1,7 @@
 return {
     "tpope/vim-fugitive",
     config = function()
-        vim.keymap.set("n", "<leader>gs", function()
-            vim.cmd.Git()
-            vim.cmd("resize 10")
-        end)
+        vim.keymap.set("n", "<leader>gs", vim.cmd.Git)
 
         local emre_Fugitive = vim.api.nvim_create_augroup("emre_Fugitive", {})
 
@@ -18,6 +15,8 @@ return {
                 end
 
                 local bufnr = vim.api.nvim_get_current_buf()
+                vim.api.nvim_win_set_height(0, 10)
+                vim.wo.winfixheight = true
                 local opts = {buffer = bufnr, remap = false}
                 vim.keymap.set("n", "<leader>p", function()
                     vim.cmd.Git('push')
