@@ -1,13 +1,12 @@
 return {
   "scalameta/nvim-metals",
-  ft = { "scala", "sbt", "java" },
+  ft = { "scala", "sbt" },
   dependencies = {
     "nvim-lua/plenary.nvim",
   },
   opts = function()
     local metals_config = require("metals").bare_config()
     metals_config.on_attach = function(client, bufnr)
-      require("metals").default_on_attach(client, bufnr)
       vim.keymap.set("n", "gi", vim.lsp.buf.implementation, { buffer = bufnr, desc = "Go to implementation" })
       vim.keymap.set("n", "<leader>F", require("metals").format, { buffer = bufnr, desc = "Format Document" })
     end

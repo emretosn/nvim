@@ -24,6 +24,32 @@ return {
 
         require("fidget").setup({})
         require("mason").setup()
+
+        -- mason-lspconfig v2+ dropped the old `handlers` API and now calls
+        -- vim.lsp.enable() for every installed server itself. Per-server
+        -- overrides go through vim.lsp.config() instead, which must be
+        -- called before mason-lspconfig.setup() below.
+        vim.lsp.config('*', { capabilities = capabilities })
+
+        vim.lsp.config('jdtls', {
+            -- jdtls (Eclipse JDT LS) requires Java 21+ to run; point it at a
+            -- newer JDK regardless of what `java`/JAVA_HOME resolve to in the shell.
+            cmd_env = {
+                JAVA_HOME = "/opt/homebrew/opt/openjdk@21",
+            },
+        })
+
+        vim.lsp.config('lua_ls', {
+            settings = {
+                Lua = {
+                    runtime = { version = "Lua 5.1" },
+                    diagnostics = {
+                        globals = { "vim", "it", "describe", "before_each", "after_each" },
+                    }
+                }
+            }
+        })
+
         require("mason-lspconfig").setup({
             ensure_installed = {
                 "lua_ls",
@@ -37,28 +63,6 @@ return {
                 "bicep",
                 "terraformls",
             },
-            handlers = {
-                function(server_name) -- default handler (optional)
-                    require("lspconfig")[server_name].setup {
-                        capabilities = capabilities
-                    }
-                end,
-
-                ["lua_ls"] = function()
-                    local lspconfig = require("lspconfig")
-                    lspconfig.lua_ls.setup {
-                        capabilities = capabilities,
-                        settings = {
-                            Lua = {
-                                runtime = { version = "Lua 5.1" },
-                                diagnostics = {
-                                    globals = { "vim", "it", "describe", "before_each", "after_each" },
-                                }
-                            }
-                        }
-                    }
-                end,
-            }
         })
 
         local cmp_select = { behavior = cmp.SelectBehavior.Select }
