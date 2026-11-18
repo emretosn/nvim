@@ -10,6 +10,15 @@ return {
       vim.g.vimtex_compiler_method = "latexmk"
       vim.g.vimtex_view_automatic = 1
 
+      vim.g.vimtex_compiler_latexmk = {
+        aux_dir = ".build",
+        options = {
+          "-verbose",
+          "-file-line-error",
+          "-interaction=nonstopmode",
+        },
+      }
+
       vim.api.nvim_create_autocmd("User", {
         pattern = "VimtexEventCompileSuccess",
         callback = function()
